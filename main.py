@@ -81,4 +81,12 @@ def read_users_me(token: str = Depends(oauth2_scheme)):
     """
     pass
 
-@app.put("/users/{username}", response_model=User)
+@app.put("/users/{username}", response_model=User)def update_user(username: str, user: User):
+    """
+    Endpoint for updating user details.
+
+    Updates the details of the user with the specified username.
+    """
+    pass
+
+@app.delete("/users/{username}")
