@@ -57,3 +57,28 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     pass
 
 @app.get("/users/me/", response_model=User)
+def read_users_me(token: str = Depends(oauth2_scheme)):
+    """
+    Endpoint for retrieving user details.
+
+    Returns details of the authenticated user.
+    """
+    pass
+
+@app.get("/users/", response_model=List[User])def read_users():
+    """
+    Endpoint for retrieving a list of all users.
+
+    Returns a list of all users registered in the system.
+    """
+    pass
+
+@app.get("/users/{username}", response_model=User)def read_user(username: str):
+    """
+    Endpoint for retrieving user details by username.
+
+    Returns details of the user with the specified username.
+    """
+    pass
+
+@app.put("/users/{username}", response_model=User)
