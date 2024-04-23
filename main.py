@@ -107,4 +107,10 @@ def submit_job(job_data: dict, token: str = Depends(oauth2_scheme)):
     """
     pass
 
-@app.get("/jobs/", response_model=List[dict])
+@app.get("/jobs/", response_model=List[dict])def get_jobs(token: str = Depends(oauth2_scheme)):
+    """
+    Endpoint for retrieving a list of jobs.
+
+    Returns a list of jobs in the processing queue.
+    """
+    pass
