@@ -90,3 +90,21 @@ def read_users_me(token: str = Depends(oauth2_scheme)):
     pass
 
 @app.delete("/users/{username}")
+def delete_user(username: str):
+    """
+    Endpoint for deleting a user account.
+
+    Deletes the user account with the specified username.
+    """
+    pass
+
+@app.post("/jobs/")
+def submit_job(job_data: dict, token: str = Depends(oauth2_scheme)):
+    """
+    Endpoint for submitting a job.
+
+    Submits a job to the processing queue.
+    """
+    pass
+
+@app.get("/jobs/", response_model=List[dict])
