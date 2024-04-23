@@ -28,3 +28,32 @@ class Token(BaseModel):
     """
     access_token: str
     token_type: str
+
+    class UserCredentials(BaseModel):
+        """
+        User credentials data model.
+
+        Represents the username and password for user authentication.
+        """
+        username: str
+        password: str
+
+# Your API endpoints with documentation
+@app.post("/token", response_model=Token)
+def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+    """
+    Endpoint for user authentication and token generation.
+
+    Returns an access token upon successful authentication.
+    """
+    pass
+
+@app.post("/users/", response_model=User)def create_user(user: UserInDB):
+    """
+    Endpoint for creating a new user account.
+
+    Creates a new user account with the provided details.
+    """
+    pass
+
+@app.get("/users/me/", response_model=User)
