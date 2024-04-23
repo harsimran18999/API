@@ -1,16 +1,30 @@
-# This is a sample Python script.
+from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from pydantic import BaseModel
+from typing import List, Optional
+from datetime import datetime, timedelta
+from jose import JWTError, jwt
+from passlib.context import CryptContext
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+app = FastAPI()
 
+# Your API documentation goes here
+# Documentation for User data models
+class User(BaseModel):
+    """
+    User data model.
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    Represents a user in the system.
+    """
+    username: str
+    email: str
+    hashed_password: str
 
+class Token(BaseModel):
+    """
+    Token data model.
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    Represents an access token used for authentication.
+    """
+    access_token: str
+    token_type: str
